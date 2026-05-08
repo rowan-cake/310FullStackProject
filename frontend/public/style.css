@@ -1,0 +1,276 @@
+:root {
+	--ink: #102542;
+	--paper: #f6f5f2;
+	--panel: #ffffff;
+	--accent: #0f766e;
+	--accent-hover: #0a5f58;
+	--warn: #b45309;
+	--danger: #b91c1c;
+	--success: #166534;
+	--border: #d8e2dc;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--ink);
+	background: linear-gradient(160deg, #e9f5ef 0%, #e8eef7 45%, #f8f4ed 100%);
+	min-height: 100vh;
+}
+
+.page {
+	max-width: 1100px;
+	margin: 2rem auto;
+	padding: 0 1rem 2rem;
+	display: grid;
+	gap: 1rem;
+}
+
+.panel {
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 1rem;
+	box-shadow: 0 10px 25px rgba(16, 37, 66, 0.08);
+}
+
+.panel-secondary {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.title {
+	margin: 0;
+}
+
+.subtitle {
+	margin-top: 0.35rem;
+	margin-bottom: 1rem;
+	color: #425466;
+}
+
+.table-title {
+	margin: 0 0 0.75rem;
+}
+
+.upload-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	align-items: center;
+}
+
+.filter-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+	gap: 0.75rem;
+}
+
+.filter-grid label {
+	display: grid;
+	gap: 0.25rem;
+	font-size: 0.9rem;
+}
+
+.filter-grid input {
+	padding: 0.45rem 0.5rem;
+	border: 1px solid #d4dbe5;
+	border-radius: 6px;
+}
+
+.filter-actions {
+	display: flex;
+	gap: 0.6rem;
+	margin-top: 0.75rem;
+}
+
+.button {
+	background-color: var(--accent);
+	border: none;
+	color: white;
+	padding: 0.65rem 1rem;
+	border-radius: 8px;
+	font-size: 0.95rem;
+}
+
+.button-subtle {
+	background: #64748b;
+}
+
+.button-subtle:hover {
+	background: #475569;
+}
+
+.button:hover {
+	background-color: var(--accent-hover);
+	cursor: pointer;
+}
+
+.table-wrap {
+	overflow-x: auto;
+	margin-top: 0.55rem;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #fff;
+}
+
+th,
+td {
+	padding: 0.55rem 0.5rem;
+	text-align: left;
+	border-bottom: 1px solid #e2e8f0;
+	vertical-align: top;
+}
+
+th {
+	background: #f8fafc;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+th:hover {
+	background: #f1f5f9;
+}
+
+.button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.status {
+	margin-top: 0.9rem;
+	padding: 0.7rem;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	font-weight: 600;
+}
+
+.status-idle {
+	background: #f5f7fa;
+	border-color: #d8dee9;
+}
+
+.status-processing {
+	background: #fff7ed;
+	border-color: #fed7aa;
+	color: var(--warn);
+}
+
+.status-success {
+	background: #ecfdf3;
+	border-color: #bbf7d0;
+	color: var(--success);
+}
+
+.status-error {
+	background: #fef2f2;
+	border-color: #fecaca;
+	color: var(--danger);
+}
+
+.result-card {
+	margin-top: 0.9rem;
+	background: #fbfcff;
+	border: 1px dashed #c9d7ea;
+	border-radius: 8px;
+	padding: 0.8rem;
+	min-height: 72px;
+}
+
+.result-card h2 {
+	margin: 0 0 0.4rem;
+	font-size: 1.1rem;
+}
+
+.stats-list {
+	margin: 0.25rem 0 0;
+	padding-left: 1rem;
+}
+
+.success-text {
+	color: var(--success);
+	margin: 0;
+}
+
+.error-text {
+	color: var(--danger);
+	margin: 0;
+}
+
+.hint-text {
+	margin-top: 0.6rem;
+	color: #475569;
+	font-size: 0.92rem;
+}
+
+.filter-grid select {
+	padding: 0.45rem 0.5rem;
+	border: 1px solid #d4dbe5;
+	border-radius: 6px;
+	background: white;
+}
+
+.insights-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	gap: 0.75rem;
+	margin-top: 0.75rem;
+}
+
+.chart-card {
+	display: grid;
+	gap: 0.45rem;
+}
+
+.chart-card-wide {
+	grid-column: 1 / -1;
+}
+
+.chart-card h3 {
+	margin: 0;
+	font-size: 1rem;
+}
+
+.chart-svg {
+	width: 100%;
+	min-height: 280px;
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+}
+
+.chart-svg text {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	fill: var(--ink);
+	font-size: 13px;
+}
+
+.chart-axis {
+	stroke: #94a3b8;
+	stroke-width: 1;
+}
+
+.chart-bar {
+	fill: var(--accent);
+}
+
+.chart-bar-muted {
+	fill: #64748b;
+}
+
+.chart-point {
+	fill: var(--accent);
+	opacity: 0.8;
+}
+
+.chart-point-label {
+	font-size: 11px;
+	fill: #475569;
+}

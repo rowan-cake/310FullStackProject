@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title>310 Frontend</title>
+		<link href="/style.css" rel="stylesheet" />
+	</head>
+	<body>
+		<main class="page">
+			<section class="panel">
+				<h1 class="title">Dataset Management</h1>
+				<p class="subtitle">Upload a course offerings or facilities zip and monitor processing status.</p>
+
+				<div class="upload-row">
+                    <input type="file" id="zip-upload" accept=".zip" />
+                    <select id="dataset-kind">
+                        <option value="course_offerings">Course offerings</option>
+                        <option value="facilities">Facilities</option>
+                    </select>
+                    <button id="upload-btn" class="button">Upload Dataset</button>
+                </div>
+
+				<div id="status-message" class="status status-idle">Waiting for upload</div>
+				<div id="result-container" class="result-card" aria-live="polite"></div>
+			</section>
+
+			<section class="panel">
+				<h2 class="table-title">Course Offerings</h2>
+				<div class="filter-grid">
+					<label>
+						<span>Departments (comma separated)</span>
+						<input id="filter-dept" type="text" placeholder="e.g. cpsc, math" />
+					</label>
+					<label>
+						<span>Year From</span>
+						<input id="filter-year-min" type="number" placeholder="2015" />
+					</label>
+					<label>
+						<span>Year To</span>
+						<input id="filter-year-max" type="number" placeholder="2020" />
+					</label>
+					<label>
+						<span>Instructor (partial)</span>
+						<input id="filter-instructor" type="text" placeholder="e.g. holmes" />
+					</label>
+				</div>
+				<div class="filter-actions">
+					<button id="apply-filters-btn" class="button">Apply Filters</button>
+					<button id="clear-filters-btn" class="button button-subtle">Clear</button>
+				</div>
+				<div id="table-status" class="hint-text"></div>
+				<div class="table-wrap">
+					<table id="offerings-table">
+						<thead>
+							<tr>
+								<th data-sort="dept">Dept</th>
+								<th data-sort="code">Code</th>
+								<th data-sort="title">Title</th>
+								<th data-sort="year">Year</th>
+								<th data-sort="instructor">Instructor</th>
+								<th data-sort="avg">Avg</th>
+							</tr>
+						</thead>
+						<tbody id="offerings-tbody"></tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="panel">
+				<h2 class="table-title">Quick Insights</h2>
+				<p class="subtitle">
+					Three charts powered by backend search results.
+				</p>
+
+				<div class="filter-grid">
+					<label>
+						<span>Facilities building</span>
+						<select id="insight-building-filter">
+							<option value="">All buildings</option>
+						</select>
+					</label>
+					<label>
+						<span>Top buildings in capacity plot</span>
+						<input id="insight-top-n" type="range" min="3" max="10" value="6" />
+						<span id="insight-top-n-value" class="hint-text">6</span>
+					</label>
+				</div>
+
+				<div id="insights-status" class="hint-text"></div>
+
+				<div class="insights-grid">
+					<article class="result-card chart-card">
+						<h3>Average grade by department</h3>
+						<p class="hint-text">Uses the course filters above.</p>
+						<svg
+							id="dept-avg-chart"
+							class="chart-svg"
+							viewBox="0 0 640 260"
+							role="img"
+							aria-label="Average grade by department"
+						></svg>
+					</article>
+
+					<article class="result-card chart-card">
+						<h3>Room types by count</h3>
+						<p class="hint-text">Uses the building filter above.</p>
+						<svg
+							id="room-type-chart"
+							class="chart-svg"
+							viewBox="0 0 640 280"
+							role="img"
+							aria-label="Room counts by room type"
+						></svg>
+					</article>
+
+					<article class="result-card chart-card chart-card-wide">
+						<h3>Building capacity vs room count</h3>
+						<p class="hint-text">Bubble size reflects total seats, hover points for details.</p>
+						<svg
+							id="building-capacity-chart"
+							class="chart-svg"
+							viewBox="0 0 640 320"
+							role="img"
+							aria-label="Building capacity versus room count"
+						></svg>
+					</article>
+				</div>
+			</section>
+
+			<section class="panel panel-secondary">
+				<button id="click-me-button" class="button">Click to get server status!</button>
+				<div id="api-status-output"></div>
+			</section>
+		</main>
+
+		<script type="text/javascript" src="/frontend.js"></script>
+	</body>
+</html>
