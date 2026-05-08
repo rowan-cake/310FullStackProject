@@ -9,17 +9,18 @@ const datadir = process.env.DATA_DIR || "./data";
 
 // Start the server
 (async (): Promise<void> => {
-	const app = await createApp({ datadir });
-	const server = app
-		.listen(port, () => {
-			const address = server.address();
-			const host = address && typeof address === "object" ? address.address : "localhost";
-			const actualHost = host === "::" ? "localhost" : host;
-			const url = `http://${actualHost}:${port}`;
+  const app = await createApp({ datadir });
+  const server = app
+    .listen(port, () => {
+      const address = server.address();
+      const host =
+        address && typeof address === "object" ? address.address : "localhost";
+      const actualHost = host === "::" ? "localhost" : host;
+      const url = `http://${actualHost}:${port}`;
 
-			Log.info(`Server running at ${url}`);
-		})
-		.on("error", (err: Error) => {
-			Log.error(`Failed to start server: ${err.message}`);
-		});
+      Log.info(`Server running at ${url}`);
+    })
+    .on("error", (err: Error) => {
+      Log.error(`Failed to start server: ${err.message}`);
+    });
 })();
