@@ -3,7 +3,6 @@ import express from "express";
 import cors from "cors";
 import multer from "multer";
 import JSZip from "jszip";
-import * as parse5 from "parse5";
 import Decimal from "decimal.js";
 
 /**
@@ -572,6 +571,7 @@ export async function createApp(config: AppConfig): Promise<Application> {
     file: JSZip.JSZipObject,
   ): Promise<any | undefined> {
     try {
+      const parse5 = await import("parse5");
       return parse5.parse(await file.async("string"));
     } catch {
       return undefined;
